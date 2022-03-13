@@ -4,3 +4,5 @@
   I got bored so I created a cmd app that can manipulate directories and files.
 # Is it useful?
   It could be! 
+# Usage
+  Make sure to enter the correct path and use double \ in front of file and folder names.
