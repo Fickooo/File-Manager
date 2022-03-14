@@ -191,7 +191,7 @@ void displayFiles(const char *folderName, const char *path) {
 }
 
 int mainMenu() {
-    char *path = new char[200]; //= "C:\\Users\\filip\\OneDrive\\Desktop";
+    char *path = new char[200];
     char *folderName = new char[100];
     char *fileName = new char[100];
     int choice;
