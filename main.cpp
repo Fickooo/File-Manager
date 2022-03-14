@@ -31,7 +31,7 @@ bool validFileName(const char *fileName)
 
 bool validPath(const char *path) {
     if(path != NULL) {
-        string regexPattern = "^[a-zA-Z]:\\(((?![<>:""/\\|?*]).)*[^ ]\\)*((?![<>:""/\\|?*]).)*[^ ]\\?$";
+        string regexPattern = "^[a-zA-Z]:(\\\\?([^\\/]*[\\/])*)([^\\/]+)$";
         regex regexRule(regexPattern);
 
         bool valid = regex_match(path, regexRule);
@@ -43,7 +43,7 @@ bool validPath(const char *path) {
 
 void createFile(const char *fileName, const char *path, const char *folderName)
 {
-    if(validFileName(fileName) && path != NULL)
+    if(validFileName(fileName))
     {
         char *file = new char[strlen(path) + strlen(fileName) + strlen(folderName) + 1];
         strcpy(file, path);
@@ -114,6 +114,8 @@ void multipleFiles(const char *path) {
 }
 
 void deleteFile(const char *fileName, const char *path, const char *folderName) {
+    if(fileName == (char*) "." || fileName == (char*) "..") return;
+
     char *fileToDelete = new char[strlen(fileName) + strlen(path) + strlen(folderName) + 1];
     strcpy(fileToDelete, path);
     strcat(fileToDelete, folderName);
@@ -189,7 +191,7 @@ void displayFiles(const char *folderName, const char *path) {
 }
 
 int mainMenu() {
-    char *path = new char[200];
+    char *path = new char[200]; //= "C:\\Users\\filip\\OneDrive\\Desktop";
     char *folderName = new char[100];
     char *fileName = new char[100];
     int choice;
