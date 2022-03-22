@@ -53,13 +53,13 @@ void createFile(const char *fileName, const char *path, const char *folderName)
         strcat(file, folderName);
         strcat(file, fileName);
 
-	FILE *newFile = fopen(file, "w");
+        FILE *newFile = fopen(file, "w");
         if(newFile == NULL) cout << "Oops! Something went wrong!" << endl;
         else cout << "Successfully created a new file!" << endl;
 
-	free(file);
+        free(file);
         file = nullptr;
-    } else cout << "Error: Check the name or path!" << endl;
+    } else cout << "Error: Check the name!" << endl;
     return;
 }
 
@@ -103,14 +103,16 @@ void multipleFiles(const char *path) {
     }
     cout << endl;
     cout << "Success!" << endl;
+
     free(folderName);
     free(fileName);
+
     folderName = nullptr;
     fileName = nullptr;
+
     return;
 }
 void deleteFile(const char *fileName, const char *path, const char *folderName) {
-    if(fileName == (char*) "." || fileName == (char*) "..") return;
     char *fileToDelete = new char[strlen(fileName) + strlen(path) + strlen(folderName) + 1];
     strcpy(fileToDelete, path);
     strcat(fileToDelete, folderName);
